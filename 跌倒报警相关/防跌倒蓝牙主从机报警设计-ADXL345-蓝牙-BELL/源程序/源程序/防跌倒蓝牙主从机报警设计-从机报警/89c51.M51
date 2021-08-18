@@ -1,0 +1,315 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        11/20/2017  09:39:16  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_C51\C51\BIN\BL51.EXE STARTUP.obj, delay.obj, main.obj TO 89c51 RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  STARTUP.obj (?C_STARTUP)
+  delay.obj (DELAY)
+  main.obj (MAIN)
+  C:\KEIL_C51\C51\LIB\C51S.LIB (?C_INIT)
+  C:\KEIL_C51\C51\LIB\C51S.LIB (?C?CLDPTR)
+  C:\KEIL_C51\C51\LIB\C51S.LIB (?C?ULDIV)
+  C:\KEIL_C51\C51\LIB\C51S.LIB (?C?ULCMP)
+
+
+LINK MAP OF MODULE:  89c51 (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0006H     UNIT         ?DT?MAIN
+            DATA    000EH     0006H     UNIT         _DATA_GROUP_
+            IDATA   0014H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0003H     UNIT         ?PR?_DELAYUS2X?DELAY
+                    0006H     0005H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+            CODE    000EH     0015H     UNIT         ?PR?_DELAYMS?DELAY
+            CODE    0023H     0003H     ABSOLUTE     
+            CODE    0026H     00F8H     UNIT         ?C?LIB_CODE
+            CODE    011EH     008CH     UNIT         ?C_C51STARTUP
+            CODE    01AAH     007AH     UNIT         ?PR?TIMER0_ISR?MAIN
+            CODE    0224H     002FH     UNIT         ?PR?_SENDSTR?MAIN
+            CODE    0253H     002BH     UNIT         ?PR?MAIN?MAIN
+            CODE    027EH     0025H     UNIT         ?PR?UART_SER?MAIN
+            CODE    02A3H     001BH     UNIT         ?PR?_SENDBYTE?MAIN
+            CODE    02BEH     0013H     UNIT         ?PR?UART_INIT?MAIN
+            CODE    02D1H     0010H     UNIT         ?PR?INIT_TIMER0?MAIN
+            CODE    02E1H     000DH     UNIT         ?C_INITSEG
+            CODE    02EEH     000BH     UNIT         ?CO?MAIN
+
+
+
+OVERLAY MAP OF MODULE:   89c51 (?C_STARTUP)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?MAIN
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/20/2017  09:39:16  PAGE 2
+
+
+  +--> ?C_INITSEG
+
+?PR?MAIN?MAIN                  -----    -----
+  +--> ?PR?INIT_TIMER0?MAIN
+  +--> ?PR?UART_INIT?MAIN
+  +--> ?PR?_DELAYMS?DELAY
+  +--> ?CO?MAIN
+  +--> ?PR?_SENDSTR?MAIN
+
+?PR?_DELAYMS?DELAY             -----    -----
+  +--> ?PR?_DELAYUS2X?DELAY
+
+?PR?_SENDSTR?MAIN              000EH    0005H
+  +--> ?PR?_SENDBYTE?MAIN
+
+?PR?_SENDBYTE?MAIN             0013H    0001H
+  +--> ?PR?_DELAYUS2X?DELAY
+
+
+
+SYMBOL TABLE OF MODULE:  89c51 (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:011EH         SEGMENT       ?C_C51STARTUP
+  I:0014H         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:0121H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:011EH         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:011EH         LINE#         133
+  C:0120H         LINE#         134
+  C:0121H         LINE#         135
+  C:0122H         LINE#         136
+  C:0124H         LINE#         185
+  C:0127H         LINE#         196
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/20/2017  09:39:16  PAGE 3
+
+
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        DELAY
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:000EH         PUBLIC        _DelayMs
+  C:0003H         PUBLIC        _DelayUs2x
+  -------         PROC          _DELAYUS2X
+  D:0007H         SYMBOL        t
+  C:0003H         LINE#         8
+  C:0003H         LINE#         9
+  C:0003H         LINE#         10
+  C:0005H         LINE#         11
+  -------         ENDPROC       _DELAYUS2X
+  -------         PROC          _DELAYMS
+  D:0006H         SYMBOL        t
+  C:000EH         LINE#         17
+  C:0010H         LINE#         18
+  C:0010H         LINE#         20
+  C:0016H         LINE#         21
+  C:0016H         LINE#         23
+  C:001BH         LINE#         24
+  C:0020H         LINE#         25
+  C:0022H         LINE#         26
+  -------         ENDPROC       _DELAYMS
+  -------         ENDMOD        DELAY
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  B:00A8H.7       PUBLIC        EA
+  C:027EH         PUBLIC        UART_SER
+  D:00A8H         PUBLIC        IE
+  B:00A8H.4       PUBLIC        ES
+  D:00B8H         PUBLIC        IP
+  B:0098H.0       PUBLIC        RI
+  D:0008H         PUBLIC        reportFlag
+  B:0098H.1       PUBLIC        TI
+  C:02A3H         PUBLIC        _SendByte
+  B:00A0H.0       PUBLIC        buzzer
+  C:0253H         PUBLIC        main
+  C:02D1H         PUBLIC        Init_Timer0
+  D:0099H         PUBLIC        SBUF
+  C:02BEH         PUBLIC        UART_Init
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  C:0224H         PUBLIC        _SendStr
+  D:0009H         PUBLIC        times_20ms
+  B:00A8H.1       PUBLIC        ET0
+  D:008CH         PUBLIC        TH0
+  D:008DH         PUBLIC        TH1
+  D:008AH         PUBLIC        TL0
+  D:008BH         PUBLIC        TL1
+  B:0088H.4       PUBLIC        TR0
+  B:0088H.6       PUBLIC        TR1
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/20/2017  09:39:16  PAGE 4
+
+
+  D:000DH         PUBLIC        baojignFlag
+  C:01AAH         PUBLIC        Timer0_isr
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          MAIN
+  C:0253H         LINE#         18
+  C:0253H         LINE#         19
+  C:0253H         LINE#         20
+  C:0256H         LINE#         21
+  C:0259H         LINE#         23
+  C:025EH         LINE#         24
+  C:0269H         LINE#         25
+  C:0269H         LINE#         26
+  C:0269H         LINE#         27
+  C:026EH         LINE#         28
+  C:026EH         LINE#         29
+  C:0271H         LINE#         30
+  C:0276H         LINE#         31
+  C:0276H         LINE#         32
+  C:0278H         LINE#         33
+  C:027AH         LINE#         35
+  C:027AH         LINE#         36
+  C:027CH         LINE#         37
+  C:027CH         LINE#         40
+  C:027CH         LINE#         41
+  -------         ENDPROC       MAIN
+  -------         PROC          INIT_TIMER0
+  C:02D1H         LINE#         44
+  C:02D1H         LINE#         45
+  C:02D1H         LINE#         46
+  C:02D4H         LINE#         47
+  C:02D7H         LINE#         48
+  C:02DAH         LINE#         49
+  C:02DCH         LINE#         50
+  C:02DEH         LINE#         51
+  C:02E0H         LINE#         52
+  -------         ENDPROC       INIT_TIMER0
+  -------         PROC          UART_INIT
+  C:02BEH         LINE#         53
+  C:02BEH         LINE#         54
+  C:02BEH         LINE#         55
+  C:02C1H         LINE#         56
+  C:02C4H         LINE#         57
+  C:02C7H         LINE#         58
+  C:02CAH         LINE#         59
+  C:02CCH         LINE#         60
+  C:02CEH         LINE#         61
+  C:02D0H         LINE#         62
+  -------         ENDPROC       UART_INIT
+  -------         PROC          _SENDBYTE
+  D:0007H         SYMBOL        dat
+  -------         DO            
+  D:0013H         SYMBOL        time_out
+  -------         ENDDO         
+  C:02A3H         LINE#         64
+  C:02A3H         LINE#         65
+  C:02A3H         LINE#         67
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/20/2017  09:39:16  PAGE 5
+
+
+  C:02A6H         LINE#         68
+  C:02A8H         LINE#         69
+  C:02B2H         LINE#         70
+  C:02BBH         LINE#         71
+  C:02BDH         LINE#         72
+  -------         ENDPROC       _SENDBYTE
+  -------         PROC          _SENDSTR
+  D:000EH         SYMBOL        s
+  D:0011H         SYMBOL        length
+  -------         DO            
+  D:0012H         SYMBOL        NUM
+  -------         ENDDO         
+  C:0224H         LINE#         74
+  C:022CH         LINE#         75
+  C:022CH         LINE#         77
+  C:022FH         LINE#         78
+  C:0236H         LINE#         79
+  C:0236H         LINE#         80
+  C:0243H         LINE#         81
+  C:024EH         LINE#         82
+  C:0250H         LINE#         83
+  C:0252H         LINE#         84
+  -------         ENDPROC       _SENDSTR
+  -------         PROC          TIMER0_ISR
+  C:01AAH         LINE#         86
+  C:01C7H         LINE#         88
+  C:01CAH         LINE#         89
+  C:01CDH         LINE#         90
+  C:01E2H         LINE#         91
+  C:0206H         LINE#         92
+  C:0206H         LINE#         93
+  C:0209H         LINE#         94
+  C:0209H         LINE#         95
+  -------         ENDPROC       TIMER0_ISR
+  -------         PROC          UART_SER
+  C:027EH         LINE#         97
+  C:0282H         LINE#         99
+  C:0285H         LINE#         100
+  C:0285H         LINE#         101
+  C:0287H         LINE#         102
+  C:028CH         LINE#         103
+  C:028CH         LINE#         104
+  C:028FH         LINE#         105
+  C:0291H         LINE#         106
+  C:0296H         LINE#         107
+  C:0296H         LINE#         108
+  C:0299H         LINE#         109
+  C:0299H         LINE#         110
+  C:0299H         LINE#         111
+  C:029CH         LINE#         112
+  C:029EH         LINE#         113
+  -------         ENDPROC       UART_SER
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        ?C?CLDPTR
+  C:0026H         PUBLIC        ?C?CLDPTR
+  -------         ENDMOD        ?C?CLDPTR
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/20/2017  09:39:16  PAGE 6
+
+
+
+  -------         MODULE        ?C?ULDIV
+  C:007BH         PUBLIC        ?C?ULDIV
+  -------         ENDMOD        ?C?ULDIV
+
+  -------         MODULE        ?C?ULCMP
+  C:010DH         PUBLIC        ?C?ULCMP
+  -------         ENDMOD        ?C?ULCMP
+
+Program Size: data=21.0 xdata=0 code=756
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
